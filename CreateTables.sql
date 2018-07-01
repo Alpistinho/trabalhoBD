@@ -454,6 +454,16 @@ go
 
 
 ALTER TABLE itemNotaFiscal
+	ADD CONSTRAINT R_32 FOREIGN KEY (cd_notafiscal) REFERENCES NotaFiscal(cd_notafiscal)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
+
+ALTER TABLE itemNotaFiscal
 	ADD CONSTRAINT R_28 FOREIGN KEY (cd_produto) REFERENCES Produto(cd_produto)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
