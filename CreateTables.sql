@@ -122,6 +122,7 @@ CREATE TABLE itemNotaFiscal
 	vl_unitarioitemnf    integer  NULL ,
 	cd_situacaotributaria char(18)  NULL ,
 	cd_produto           integer  NULL 
+	cd_notafiscal          integer  NULL 
 )
 go
 
@@ -448,6 +449,16 @@ ALTER TABLE itemNotaFiscal
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
+
+
+
+
+ALTER TABLE itemNotaFiscal
+	ADD CONSTRAINT R_32 FOREIGN KEY (cd_notafiscal) REFERENCES NotaFiscal(cd_notafiscal)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
 
 
 
