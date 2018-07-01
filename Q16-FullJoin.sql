@@ -1,8 +1,3 @@
-SELECT
-    *
-FROM 
-    Pessoa
-FULL OUTER JOIN
-    NotaFiscal
-ON 
-    Pessoa.cd_pessoa = NotaFiscal.cd_cliente;
+Select * FROM PESSOA PE
+FULL JOIN NOTAFISCAL NOTA
+ON PE.CD_PESSOA = NOTA.CD_CLIENTE;
