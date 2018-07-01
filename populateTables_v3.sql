@@ -219,14 +219,19 @@ Begin
 	Set @Id = @Id + 1
 End
 
---Declare @Id int
---Declare @tableSize int
+Set @Id = 1
 
---set @tableSize = 50
+Declare @cliente_id int
+Declare @pacote_id int
 
------ NOTA FISCAL
-
--- PRECISA FAZER AINDA
+While @Id <= 10
+Begin
+	select @cliente_id = cd_pessoa from Pessoa order by newid()
+	select @pacote_id = cd_pacote from Pacote order by newid()
+	select @produto_id = cd_produto from Produto order by newid()
+	insert into NotaFiscal values (@Id, CAST(N'2012-01-02' AS datetime), CAST(N'2012-01-03' AS datetime), CAST(N'15:30:00' AS Time), N'EMPRESTIMO          ', 5, CAST(35426547 AS Numeric(18, 0)), CAST(1 AS Numeric(18, 0)), CAST(123456 AS Numeric(18, 0)), CAST(6 AS Numeric(18, 0)), 1, CAST(1 AS Numeric(18, 0)), 3.5000, @cliente_id,  @pacote_id, @produto_id)
+	Set @Id = @Id + 1
+End
 
 
 ----- DUPLICATA
