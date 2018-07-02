@@ -186,27 +186,14 @@ Begin
 	Set @Id = @Id + 1
 End
 
-
-Set @Id = 1
-Declare @sit_trib_id int
-Declare @produto_id int
-Declare @valor float
-While @Id <= @tableSize
-Begin
-	select @valor = cast(rand()*10 as float)
-	select @qnt_prod = cast(rand()*10 as int)
-	select @sit_trib_id = cd_situacaotributaria from SituacaoTributaria order by newid()
-	select @produto_id = cd_produto from Produto order by newid()
-	insert into ItemNotaFiscal values (@Id, @qnt_prod, @valor, @sit_trib_id, @produto_id)
-	Set @Id = @Id + 1
-End
-
-
 Set @Id = 1
 
 Declare @ipi float
 Declare @icms float
 Declare @estoque int
+Declare @valor float
+Declare @sit_trib_id int
+Declare @produto_id int
 While @Id <= @tableSize
 Begin
 	select @valor = cast(rand()*10 as float)
@@ -230,6 +217,20 @@ Begin
 	select @pacote_id = cd_pacote from Pacote order by newid()
 	select @produto_id = cd_produto from Produto order by newid()
 	insert into NotaFiscal values (@Id, CAST(N'2012-01-02' AS datetime), CAST(N'2012-01-03' AS datetime), CAST(N'15:30:00' AS Time), N'EMPRESTIMO          ', 5, CAST(35426547 AS Numeric(18, 0)), CAST(1 AS Numeric(18, 0)), CAST(123456 AS Numeric(18, 0)), CAST(6 AS Numeric(18, 0)), 1, CAST(1 AS Numeric(18, 0)), 3.5000, @cliente_id,  @pacote_id, @produto_id)
+	Set @Id = @Id + 1
+End
+
+Set @Id = 1
+Declare @notafiscal_id int
+
+While @Id <= @tableSize
+Begin
+	select @valor = cast(rand()*10 as float)
+	select @qnt_prod = cast(rand()*10 as int)
+	select @sit_trib_id = cd_situacaotributaria from SituacaoTributaria order by newid()
+	select @notafiscal_id = cd_notafiscal from NotaFiscal order by newid()
+	select @produto_id = cd_produto from Produto order by newid()
+	insert into ItemNotaFiscal values (@Id, @qnt_prod, @valor, @sit_trib_id, @produto_id, @notafiscal_id)
 	Set @Id = @Id + 1
 End
 
