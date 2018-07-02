@@ -19,6 +19,7 @@ BEGIN
     BEGIN
 
         insert into NotaFiscal values (@notafiscal_id, CAST(N'2012-01-02' AS datetime), CAST(N'2012-01-03' AS datetime), CAST(N'15:30:00' AS Time), N'COMPRA', 5, CAST(35426547 AS Numeric(18, 0)), CAST(1 AS Numeric(18, 0)), CAST(123456 AS Numeric(18, 0)), CAST(6 AS Numeric(18, 0)), 1, CAST(1 AS Numeric(18, 0)), 3.5000, 12345,  NULL, @produto_id)
+        insert into ItemNotaFiscal values(notafiscal_id, 1, 1, NULL, @produto_id, @notafiscal_id)
 		set @notafiscal_id = @notafiscal_id + 1
         FETCH NEXT FROM @cursorProduto 
         INTO @produto_id 
